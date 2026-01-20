@@ -13,5 +13,13 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ramana-2527/web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ramana-2527/web/issues"
+  },
+  "homepage": "https://github.com/Ramana-2527/web#readme"
 }

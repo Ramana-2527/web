@@ -106,12 +106,20 @@ function resetAll() {
   cart = [];
   updateCart();
 
-  ["name","phone","email","feedbackName","feedbackEmail","feedbackMessage"]
-    .forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = "";
-    });
+  [
+    "name",
+    "phone",
+    "email",
+    "feedbackName",
+    "feedbackPhone",
+    "feedbackEmail",
+    "feedbackMessage"
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
 }
+
 
 
 document.getElementById("confirmOrderBtn").onclick = () => {
@@ -142,14 +150,21 @@ document.getElementById("confirmOrderBtn").onclick = () => {
 
 document.getElementById("submitFeedbackBtn").onclick = async () => {
   const name = document.getElementById("feedbackName").value.trim();
+  const phone = document.getElementById("feedbackPhone").value.trim();
   const email = document.getElementById("feedbackEmail").value.trim();
   const message = document.getElementById("feedbackMessage").value.trim();
 
   const nameRegex = /^[A-Za-z ]{3,}$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!nameRegex.test(name)) {
     alert("Name must contain minimum 3 letters");
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    alert("Enter valid 10-digit mobile number");
     return;
   }
 
@@ -166,13 +181,22 @@ document.getElementById("submitFeedbackBtn").onclick = async () => {
   await fetch("/api/feedback", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, message })
+    body: JSON.stringify({ name, phone, email, message })
   });
 
   alert("Thank you for your feedback!");
   resetAll();
-  window.open("/feedback", "_blank");
+
+
+const a = document.createElement("a");
+a.href = "/feedback";
+a.download = "feedback.txt";
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+
 };
+
 
 
 displayMovies();

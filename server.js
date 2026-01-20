@@ -6,14 +6,15 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.post("/api/feedback", (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, phone, email, message } = req.body;
 
   const text = `
 -------------------------
-Name: ${name}
-Email: ${email}
+Name   : ${name}
+Phone  : ${phone}
+Email  : ${email}
 Message: ${message}
-Date: ${new Date().toLocaleString()}
+Date   : ${new Date().toLocaleString()}
 -------------------------
 
 `;
@@ -23,12 +24,19 @@ Date: ${new Date().toLocaleString()}
 });
 
 
+
 app.get("/feedback", (req, res) => {
-  if (!fs.existsSync("feedback.txt")) {
+  const filePath = __dirname + "/feedback.txt";
+
+  if (!fs.existsSync(filePath)) {
     return res.send("No feedback available yet.");
   }
-  res.sendFile(__dirname + "/feedback.txt");
+
+  res.download(filePath, "feedback.txt");
 });
+
+
+
 
 app.listen(3000, () =>
   console.log("Server running on http://localhost:3000")

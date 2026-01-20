@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AVR Movie Rental Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>AVR Movie Rental Shop</h1>
+    <p>Your Trusted Destination for Movies</p>
+</header>
+
+<section class="section">
+    <h2>Movies</h2>
+    <div id="movies"></div>
+</section>
+
+<section class="section">
+    <h2>Cart</h2>
+    <div id="cartItems">No movies added</div>
+    <h3>Total: ₹<span id="total">0</span></h3>
+</section>
+
+<section class="section">
+    <h2>Customer Details</h2>
+    <input id="name" type="text" placeholder="Full Name">
+    <input id="phone" type="text" placeholder="Phone Number">
+    <input id="email" type="email" placeholder="Email">
+    <button id="confirmOrderBtn">Confirm Order</button>
+</section>
+
+<section class="section about">
+    <h2>Why Choose AVR?</h2>
+
+    <p class="about-intro">
+        🎬 <strong>AVR Movie Rental Shop</strong> brings cinema closer to you.
+        Enjoy a premium collection of hand-picked movies across all popular genres,
+        available instantly at prices everyone loves.
+    </p>
+
+    <div class="about-points">
+        <div>🎥 <strong>Latest & Trending Movies</strong><br><span>From blockbusters to classics</span></div>
+        <div>💰 <strong>Affordable Pricing</strong><br><span>Best rent & buy options</span></div>
+        <div>⚡ <strong>Fast & Easy Booking</strong><br><span>Simple clicks, instant access</span></div>
+        <div>❤️ <strong>Loved by Movie Fans</strong><br><span>Trusted entertainment platform</span></div>
+    </div>
+
+    <p class="about-footer">
+        ✨ <em>Choose AVR — where entertainment meets convenience.</em>
+    </p>
+</section>
+
+
+<section class="section">
+    <h2>Feedback</h2>
+    <input id="feedbackName" type="text" placeholder="Your Name">
+    <input id="feedbackEmail" type="email" placeholder="Your Email">
+    <textarea id="feedbackMessage" placeholder="Your Message"></textarea>
+    <button id="submitFeedbackBtn">Submit Feedback</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
